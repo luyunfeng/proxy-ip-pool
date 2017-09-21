@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.lucode.proxyip.dal.dao.ProxyIpMapper">
+  <resultMap id="BaseResultMap" type="cn.lucode.proxyip.dal.pojo.ProxyIp">
+    <id column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="port" jdbcType="VARCHAR" property="port" />
+    <result column="delay" jdbcType="DECIMAL" property="delay" />
+    <result column="modifyTime" jdbcType="DATE" property="modifytime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ip, port, delay, modifyTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from proxy_ip
+    where ip = #{ip,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from proxy_ip
+    where ip = #{ip,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.lucode.proxyip.dal.pojo.ProxyIp">
+    <selectKey keyProperty="ip" order="AFTER" resultType="java.lang.String">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into proxy_ip (port, delay, modifyTime
+      )
+    values (#{port,jdbcType=VARCHAR}, #{delay,jdbcType=DECIMAL}, #{modifytime,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.lucode.proxyip.dal.pojo.ProxyIp">
+    <selectKey keyProperty="ip" order="AFTER" resultType="java.lang.String">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into proxy_ip
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="port != null">
+        port,
+      </if>
+      <if test="delay != null">
+        delay,
+      </if>
+      <if test="modifytime != null">
+        modifyTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="port != null">
+        #{port,jdbcType=VARCHAR},
+      </if>
+      <if test="delay != null">
+        #{delay,jdbcType=DECIMAL},
+      </if>
+      <if test="modifytime != null">
+        #{modifytime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.lucode.proxyip.dal.pojo.ProxyIp">
+    update proxy_ip
+    <set>
+      <if test="port != null">
+        port = #{port,jdbcType=VARCHAR},
+      </if>
+      <if test="delay != null">
+        delay = #{delay,jdbcType=DECIMAL},
+      </if>
+      <if test="modifytime != null">
+        modifyTime = #{modifytime,jdbcType=DATE},
+      </if>
+    </set>
+    where ip = #{ip,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.lucode.proxyip.dal.pojo.ProxyIp">
+    update proxy_ip
+    set port = #{port,jdbcType=VARCHAR},
+      delay = #{delay,jdbcType=DECIMAL},
+      modifyTime = #{modifytime,jdbcType=DATE}
+    where ip = #{ip,jdbcType=VARCHAR}
+  </update>
+</mapper>
