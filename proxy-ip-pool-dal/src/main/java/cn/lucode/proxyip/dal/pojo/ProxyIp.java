@@ -1,5 +1,7 @@
 package cn.lucode.proxyip.dal.pojo;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -8,15 +10,35 @@ import java.util.Date;
  * @author 
  */
 public class ProxyIp implements Serializable {
+    private static final long serialVersionUID = 2198206330908963570L;
+    private String id;
+
     private String ip;
 
     private String port;
 
     private BigDecimal delay;
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
+    private Date modifyTime;
 
-    private Date modifytime;
+    @Override
+    public String toString() {
+        return "ProxyIp{" +
+                "id='" + id + '\'' +
+                ", ip='" + ip + '\'' +
+                ", port='" + port + '\'' +
+                ", delay=" + delay +
+                ", modifyTime=" + modifyTime +
+                '}';
+    }
 
-    private static final long serialVersionUID = 1L;
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getIp() {
         return ip;
@@ -42,11 +64,11 @@ public class ProxyIp implements Serializable {
         this.delay = delay;
     }
 
-    public Date getModifytime() {
-        return modifytime;
+    public Date getModifyTime() {
+        return modifyTime;
     }
 
-    public void setModifytime(Date modifytime) {
-        this.modifytime = modifytime;
+    public void setModifyTime(Date modifyTime) {
+        this.modifyTime = modifyTime;
     }
 }
