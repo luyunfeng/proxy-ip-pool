@@ -1,6 +1,11 @@
 package cn.lucode.proxyip.utils.model;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import us.codecraft.webmagic.Page;
+import us.codecraft.webmagic.model.AfterExtractor;
+import us.codecraft.webmagic.model.annotation.ExtractBy;
+import us.codecraft.webmagic.model.annotation.HelpUrl;
+import us.codecraft.webmagic.model.annotation.TargetUrl;
 
 import javax.xml.crypto.Data;
 import java.io.Serializable;
@@ -8,7 +13,8 @@ import java.io.Serializable;
 /**
  * Created by yunfeng.lu on 2017/9/21.
  */
-public class ProxyIpModel implements Serializable{
+
+public class ProxyIpModel implements Serializable {
 
     private static final long serialVersionUID = -6734268779330087826L;
     private String ip;
@@ -58,4 +64,6 @@ public class ProxyIpModel implements Serializable{
     public void setModifyTime(Data modifyTime) {
         this.modifyTime = modifyTime;
     }
+
+
 }

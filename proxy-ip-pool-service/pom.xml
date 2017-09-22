@@ -12,6 +12,12 @@
     <artifactId>proxy-ip-pool-service</artifactId>
 
     <dependencies>
+
+        <dependency>
+            <groupId>cn.lucode</groupId>
+            <artifactId>proxy-ip-pool-utils</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 
