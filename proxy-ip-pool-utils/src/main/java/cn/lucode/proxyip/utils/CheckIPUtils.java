@@ -43,6 +43,6 @@ public class CheckIPUtils {
     }
 
     public static void main(String[] args) {
-        System.out.println(CheckIPUtils.checkValidIP("119.5.169.70", 808));
+        System.out.println(CheckIPUtils.checkValidIP("120.27.5.62", 9090));
     }
 }

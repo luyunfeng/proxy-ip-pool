@@ -56,11 +56,30 @@
             <artifactId>fast-dev-core</artifactId>
             <version>${fastdev.version}</version>
         </dependency>
-
         <dependency>
             <groupId>cn.lucode</groupId>
-            <artifactId>fast-dev-core</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <artifactId>fast-dev-util</artifactId>
+            <version>${fastdev.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>slf4j-api</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>logback-access</artifactId>
+                    <groupId>ch.qos.logback</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>logback-core</artifactId>
+                    <groupId>ch.qos.logback</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>logback-classic</artifactId>
+                    <groupId>ch.qos.logback</groupId>
+                </exclusion>
+
+            </exclusions>
+
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
